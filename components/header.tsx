@@ -6,6 +6,7 @@ import React from 'react'
 import {cn} from '@/lib/utils'
 import {useScroll} from 'motion/react'
 import {ThemeToggle} from "@/components/theme-toggle";
+import {Logout} from "@/components/logout";
 
 const menuItems = [
   {name: 'Features', href: '#link'},
@@ -15,8 +16,9 @@ const menuItems = [
 ]
 
 export const HeroHeader = () => {
-  const [menuState, setMenuState] = React.useState(false)
-  const [scrolled, setScrolled] = React.useState(false)
+  const [menuState, setMenuState] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
 
   const {scrollYProgress} = useScroll()
 
@@ -85,21 +87,29 @@ export const HeroHeader = () => {
               </div>
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <ThemeToggle/>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm">
-                  <Link href="#">
-                    <span>Login</span>
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="sm">
-                  <Link href="#">
-                    <span>Sign Up</span>
-                  </Link>
-                </Button>
+                {isLoggedIn ? (
+                  <>
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm">
+                      <Link href="/login">
+                        <span>Login</span>
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      size="sm">
+                      <Link href="/register">
+                        <span>Sign Up</span>
+                      </Link>
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Logout/>
+                  </>
+                )}
               </div>
             </div>
           </div>
