@@ -56,7 +56,7 @@ export default function HeroSection() {
                   as="p"
                   className="mt-8 max-w-2xl text-pretty text-lg">
                   Capture ideas, plans, and knowledge in one place. RichNote is a simple, fast, and flexible notebook that adapts to your workflow — whether you’re a student, creator, entrepreneur, or
-                  developer. It iss just smarter way to note everything.
+                  developer. It is just smarter way to note everything!
                 </TextEffect>
                 <>
                   {/*<AnimatedGroup*/}
