@@ -33,7 +33,7 @@ export function RegisterForm({className, ...props}: ComponentProps<"div">) {
       email: "",
       password: "",
       confirmPassword: "",
-      name:""
+      name: ""
     },
   })
 
@@ -46,10 +46,9 @@ export function RegisterForm({className, ...props}: ComponentProps<"div">) {
         values.name
       )
       if (res.success) {
-        toast.success(res.message)
+        toast.success("Please check your email to verify your account.")
         router.push("/dashboard")
-      }
-      else toast.error(res.message)
+      } else toast.error(res.message)
     } catch (e) {
       console.log(e)
     } finally {
