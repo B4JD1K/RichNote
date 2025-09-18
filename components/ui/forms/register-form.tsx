@@ -13,6 +13,7 @@ import React, {ComponentProps, useState} from "react";
 import {toast} from "sonner";
 import {Loader2} from "lucide-react";
 import Link from "next/link";
+import {authClient} from "@/lib/auth-client";
 
 const formSchema = z.object({
   email: z.email(),
@@ -32,26 +33,41 @@ export function RegisterForm({className, ...props}: ComponentProps<"div">) {
       confirmPassword: "",
       name: ""
     },
-  })
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
+
+      if (values.password !== values.confirmPassword) {
+        toast.error("Passwords do not match");
+        return;
+      }
+
       const res = await signUpUser(
         values.email,
         values.password,
         values.name
-      )
+      );
+
       if (res.success) {
         toast.success("Please check your email to verify your account.");
-      } else toast.error(res.message)
+      } else {
+        toast.error(res.message);
+      }
     } catch (e) {
-      console.log(e)
+      console.error(e);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
+  const signUp = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/dashboard",
+    });
+  };
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -126,19 +142,19 @@ export function RegisterForm({className, ...props}: ComponentProps<"div">) {
                     />
                   </div>
                 </div>
-                  <div className="flex flex-col gap-3">
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? <Loader2 className="size-4 animate-spin"/> : "Sing up"}
-                    </Button>
-                    <Button variant="outline" className="w-full">
-                      Sing up with Google
-                    </Button>
-                  </div>
+                <div className="flex flex-col gap-3">
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? <Loader2 className="size-4 animate-spin"/> : "Sing up"}
+                  </Button>
+                  <Button variant="outline" className="w-full" onClick={signUp} type="button">
+                    Sing up with Google
+                  </Button>
                 </div>
+              </div>
               <div className="mt-4 text-center text-sm">
                 Already have an account?{" "}
                 <Link href="/login" className="underline underline-offset-4">
