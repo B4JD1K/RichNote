@@ -1,4 +1,3 @@
-import {Logo} from '@/components/logo'
 import Link from 'next/link'
 
 const links = [
@@ -36,7 +35,9 @@ export default function FooterSection() {
           href="/"
           aria-label="go home"
           className="mx-auto block size-fit">
-          <Logo/>
+
+          {/* Logo */}
+          <span className="text-2xl font-bold">✨RichNote</span>
         </Link>
 
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
@@ -158,7 +159,8 @@ export default function FooterSection() {
             </svg>
           </Link>
         </div>
-        <span className="text-muted-foreground block text-center text-sm"> © {new Date().getFullYear()} RichNote by B4JD1K, All rights reserved</span>
+        <span className="text-muted-foreground block text-center text-sm"> © {new Date().getFullYear()} ✨RichNote by <Link href="https://github.com/B4JD1K" target="_blank"
+                                                                                                                           className="font-bold underline">B4JD1K</Link>, All rights reserved.</span>
       </div>
     </footer>
   )

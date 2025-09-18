@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RichNote",
-  description: "RichNote is a powerful note-taking app designed to help you stay organized and productive.",
+  title: "✨RichNote",
+  description: "✨RichNote is a powerful note-taking app designed to help you stay organized and productive.",
 };
 
 export default function RootLayout({

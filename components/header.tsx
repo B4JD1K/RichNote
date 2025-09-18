@@ -41,9 +41,9 @@ export const HeroHeader = () => {
                 href="/"
                 aria-label="home"
                 className="flex items-center space-x-2">
-                {/*<Logo/>*/}
 
-                <span className="text-2xl font-bold">RichNote</span>
+                {/* Logo */}
+                <span className="text-2xl font-bold">✨RichNote</span>
               </Link>
 
               <button

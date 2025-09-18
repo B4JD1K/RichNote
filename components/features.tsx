@@ -8,7 +8,7 @@ export default function Features() {
       <div className="@container mx-auto max-w-5xl px-6">
         <div className="text-center">
           <h2 className="text-balance text-4xl font-semibold lg:text-5xl">📔 Everything you need, in one place</h2>
-          <p className="mt-4">RichNote combines simplicity with power — quick notes, flexible formatting, and full control over your content.</p>
+          <p className="mt-4">✨RichNote combines simplicity with power — quick notes, flexible formatting, and full control over your content.</p>
         </div>
         <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
           <Card className="group bg-background">
