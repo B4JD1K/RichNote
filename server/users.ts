@@ -9,10 +9,9 @@ export const signInUser = async (email: string, password: string) => {
         email,
         password
       },
-      asResponse: true // returns a response object instead of data
     });
 
-    return {success: true, message: "Signed in successfully"}
+    return {success: true, message: "Logged in successfully"}
   } catch (error) {
     const e = error as Error;
     return {success: false, message: e.message || "Failed to sign in"};

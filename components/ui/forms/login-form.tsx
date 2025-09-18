@@ -7,7 +7,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {Input} from "@/components/ui/input"
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form"
+import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form"
 import {signInUser} from "@/server/users";
 import {ComponentProps, useState} from "react";
 import {toast} from "sonner";
@@ -46,7 +46,7 @@ export function LoginForm({className, ...props}: ComponentProps<"div">) {
         router.push("/dashboard")
       } else toast.error(res.message)
     } catch (e) {
-      console.log(e)
+      console.error(e);
     } finally {
       setIsLoading(false)
     }
@@ -118,7 +118,7 @@ export function LoginForm({className, ...props}: ComponentProps<"div">) {
               <div className="mt-4 text-center text-sm">
                 Don&apos;t have an account?{" "}
                 <Link href="/register" className="underline underline-offset-4">
-                  Log in!
+                  Sign in!
                 </Link>
               </div>
             </form>

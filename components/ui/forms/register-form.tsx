@@ -13,7 +13,6 @@ import React, {ComponentProps, useState} from "react";
 import {toast} from "sonner";
 import {Loader2} from "lucide-react";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
 
 const formSchema = z.object({
   email: z.email(),
@@ -23,8 +22,6 @@ const formSchema = z.object({
 })
 
 export function RegisterForm({className, ...props}: ComponentProps<"div">) {
-  const router = useRouter();
-
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,8 +43,7 @@ export function RegisterForm({className, ...props}: ComponentProps<"div">) {
         values.name
       )
       if (res.success) {
-        toast.success("Please check your email to verify your account.")
-        router.push("/dashboard")
+        toast.success("Please check your email to verify your account.");
       } else toast.error(res.message)
     } catch (e) {
       console.log(e)
@@ -146,7 +142,7 @@ export function RegisterForm({className, ...props}: ComponentProps<"div">) {
               <div className="mt-4 text-center text-sm">
                 Already have an account?{" "}
                 <Link href="/login" className="underline underline-offset-4">
-                  Sign in
+                  Log in!
                 </Link>
               </div>
             </form>
