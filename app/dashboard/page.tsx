@@ -1,9 +1,14 @@
 "use client"
 
-export default function Dashboard() {
+import {PageWrapper} from "@/app/page-wrapper/page-wrapper";
+
+export default function Page() {
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      Dashboard
-    </div>
+    <PageWrapper breadcrumbs={[
+      {label: "Dashboard", href: "/dashboard"}
+    ]}
+    >
+      <h1 className="text-7xl font-bold italic items-center">✨RichNote</h1>
+    </PageWrapper>
   )
 }
