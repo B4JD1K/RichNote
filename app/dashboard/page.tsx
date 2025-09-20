@@ -1,14 +1,22 @@
-"use client"
+import {PageWrapper} from "@/components/page-wrapper";
+import {getNotebooks} from "@/server/notebooks";
 
-import {PageWrapper} from "@/app/page-wrapper/page-wrapper";
+export default async function Page() {
+  const notebooks = await getNotebooks();
 
-export default function Page() {
   return (
-    <PageWrapper breadcrumbs={[
-      {label: "Dashboard", href: "/dashboard"}
-    ]}
-    >
-      <h1 className="text-7xl font-bold italic items-center">✨RichNote</h1>
+    <PageWrapper breadcrumbs={[{label: "Dashboard", href: "/dashboard"}]}>
+      <h1>Notebooks</h1>
+
+      {notebooks.success &&
+        notebooks?.notebooks?.map((notebook) => (
+          <div key={notebook.id}>{notebook.name}</div>
+        ))}
+
+      {notebooks.success && notebooks?.notebooks?.length === 0 && (
+        <div>No notebooks found </div>
+      )}
+
     </PageWrapper>
   )
 }
