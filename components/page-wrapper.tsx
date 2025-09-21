@@ -1,6 +1,6 @@
-import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList} from "@/components/ui/breadcrumb"
-import {SidebarTrigger} from "@/components/ui/sidebar";
-import {Logout} from "@/components/logout";
+import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList,} from "@/components/ui/breadcrumb";
+import {SidebarTrigger} from "./ui/sidebar";
+import {Logout} from "./logout";
 import {ThemeToggle} from "@/components/theme-toggle";
 
 interface PageWrapperProps {
@@ -39,10 +39,9 @@ export function PageWrapper({children, breadcrumbs}: PageWrapperProps) {
         </div>
       </header>
 
-      <div className="flex flex-col gap-4 p-4 pt-0">
+      <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
         {children}
       </div>
     </div>
   );
 }
-
