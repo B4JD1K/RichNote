@@ -1,5 +1,7 @@
 import {getNoteById} from "@/server/notes";
 import {PageWrapper} from "@/components/page-wrapper";
+import {RichTextboxEditor} from "@/components/rich-textbox-editor";
+import {JSONContent} from "@tiptap/react";
 
 type Params = Promise<{
   noteId: string;
@@ -13,10 +15,13 @@ export default async function NotePage({params}: { params: Params }) {
   return (
     <PageWrapper breadcrumbs={[
       {label: "Dashboard", href: "/dashboard"},
+      {label: note?.notebook.name ?? "Notebook", href: "/dashboard/notebook/${notebookId}"},
       {label: note?.title ?? "Note", href: "/dashboard/note/${noteId}"}
     ]}>
       <h1>{note?.title}</h1>
       <h2>{note?.id}</h2>
+
+      <RichTextboxEditor noteId={noteId} content={note?.content as JSONContent[]}/>
     </PageWrapper>
   )
 }
